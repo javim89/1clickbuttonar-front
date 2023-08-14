@@ -1,17 +1,9 @@
 import React from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import ClickToWin from "./components/ClickToWin";
+import { GET_USERS } from "./querys/querys";
 
 import "./App.css";
-
-const GET_USERS = gql`
-  query {
-    getAllUsers {
-      id
-      name
-      surname
-    }
-  }
-`;
 
 const ShowUsers = () => {
   const { loading, error, data } = useQuery(GET_USERS);
@@ -19,11 +11,20 @@ const ShowUsers = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return data.getAllUsers.map((user: UserI) => <span>{user.surname}</span>);
+  return (
+    <ul>
+      {data.getAllUsers.map((user: UserI) => (
+        <li>{user.name} {user.surname}</li>
+      ))}
+    </ul>
+  );
 };
+
+
 function App() {
   return (
     <div className="App">
+      <ClickToWin />
       <ShowUsers />
     </div>
   );
