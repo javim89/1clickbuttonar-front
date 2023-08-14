@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import ClickToWin from "./components/ClickToWin";
 import { GET_USERS } from "./querys/querys";
+import LastUser from "./components/LastUser";
 
 import "./App.css";
 
@@ -24,6 +25,7 @@ const ShowUsers = () => {
 function App() {
   return (
     <div className="App">
+      <LastUser />
       <ClickToWin />
       <ShowUsers />
     </div>
