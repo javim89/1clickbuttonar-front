@@ -2,8 +2,7 @@ import React from "react";
 import { useSubscription } from "@apollo/client";
 import { LAST_USER } from "../subscriptions/subscriptions";
 
-const LastUser = () => {
- 
+const LastUser = (): React.ReactNode => {
   const { data, loading } = useSubscription(LAST_USER);
 
   return (

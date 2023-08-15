@@ -12,4 +12,4 @@ const GET_USERS = gql`
 
 export {
   GET_USERS
-}
+};

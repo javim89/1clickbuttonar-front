@@ -6,11 +6,11 @@ import LastUser from "./components/LastUser";
 
 import "./App.css";
 
-const ShowUsers = () => {
+const ShowUsers = (): React.ReactNode => {
   const { loading, error, data } = useQuery(GET_USERS);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
+  if (error != null) return <p>Error : {error.message}</p>;
 
   return (
     <ul>
@@ -21,8 +21,7 @@ const ShowUsers = () => {
   );
 };
 
-
-function App() {
+function App (): React.ReactNode {
   return (
     <div className="App">
       <LastUser />

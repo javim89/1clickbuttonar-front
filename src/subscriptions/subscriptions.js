@@ -12,4 +12,4 @@ const LAST_USER = gql`
 
 export {
   LAST_USER
-}
+};
