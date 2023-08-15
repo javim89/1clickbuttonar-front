@@ -10,7 +10,7 @@ const LastUser = () => {
     <h2>
       {loading ? "cargando" : data.lastUser.surname}
     </h2>
-  )
-}
+  );
+};
 
 export default LastUser;

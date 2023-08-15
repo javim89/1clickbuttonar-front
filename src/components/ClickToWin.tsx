@@ -5,7 +5,7 @@ import { GET_USERS } from "../querys/querys";
 
 
 const ClickToWin = () => {
-  const [addUser, { data, loading, error }] = useMutation(ADD_USER, {
+  const [addUser, { loading, error }] = useMutation(ADD_USER, {
     refetchQueries: [
       GET_USERS
     ]
@@ -21,11 +21,11 @@ const ClickToWin = () => {
           name: `javi react${Math.floor(Math.random() * 10)}`,
           surname: `mar react${Math.floor(Math.random() * 10)}`
         }
-      })
+      });
     }}>
       Click to win
     </button>
-  )
+  );
 };
 
 export default ClickToWin;

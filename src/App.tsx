@@ -14,8 +14,8 @@ const ShowUsers = () => {
 
   return (
     <ul>
-      {data.getAllUsers.map((user: UserI) => (
-        <li>{user.name} {user.surname}</li>
+      {data.getAllUsers.map((user: UserI, index: number) => (
+        <li key={index}>{user.name} {user.surname}</li>
       ))}
     </ul>
   );
