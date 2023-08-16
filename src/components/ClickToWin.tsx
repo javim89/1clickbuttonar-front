@@ -2,6 +2,7 @@ import React from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../mutations/mutations";
 import { GET_USERS } from "../querys/querys";
+import { Button } from "@mui/material";
 
 const ClickToWin = (): React.ReactNode => {
   const [addUser, { loading, error }] = useMutation(ADD_USER, {
@@ -14,7 +15,7 @@ const ClickToWin = (): React.ReactNode => {
   if (error != null) return <div>Submission error! ${error.message}</div>;
 
   return (
-    <button onClick={() => {
+    <Button variant="contained" onClick={() => {
       addUser({
         variables: {
           name: `javi react${Math.floor(Math.random() * 10)}`,
@@ -25,7 +26,7 @@ const ClickToWin = (): React.ReactNode => {
       });
     }}>
       Click to win
-    </button>
+    </Button>
   );
 };
 

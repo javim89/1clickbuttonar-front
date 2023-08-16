@@ -10,6 +10,17 @@ const GET_USERS = gql`
   }
 `;
 
+const GET_CURRENT_GAME = gql`
+  query {
+    getCurrentGame {
+      id
+      amount
+      totalClicks
+    }
+  }
+`;
+
 export {
-  GET_USERS
+  GET_USERS,
+  GET_CURRENT_GAME
 };
