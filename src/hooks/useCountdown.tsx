@@ -1,7 +1,7 @@
 // import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 
-const useCountdown = (targetDate: any): [number, number, number, number, number] => {
+const useCountdown = (targetDate: any): { days: number, hours: number, minutes: number, seconds: number, miliseconds: number } => {
   const countDownDate = new Date(targetDate).getTime();
 
   const [countDown, setCountDown] = useState(
@@ -19,7 +19,7 @@ const useCountdown = (targetDate: any): [number, number, number, number, number]
   return getReturnValues(countDown);
 };
 
-const getReturnValues = (countDown: number): [number, number, number, number, number] => {
+const getReturnValues = (countDown: number): { days: number, hours: number, minutes: number, seconds: number, miliseconds: number } => {
   // calculate time left
   const days = Math.floor(countDown / (1000 * 60 * 60 * 24));
   const hours = Math.floor(
@@ -29,7 +29,7 @@ const getReturnValues = (countDown: number): [number, number, number, number, nu
   const seconds = Math.floor((countDown % (1000 * 60)) / 1000);
   const miliseconds = Math.floor(countDown % 1000);
 
-  return [days, hours, minutes, seconds, miliseconds];
+  return { days, hours, minutes, seconds, miliseconds };
 };
 
 export { useCountdown };

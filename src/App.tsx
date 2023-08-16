@@ -24,18 +24,14 @@ import { useCountdown } from "./hooks/useCountdown";
 // };
 
 const Counter = ({ targetDate }: any): React.ReactNode => {
-  const [days, hours, minutes, seconds, miliseconds] = useCountdown(targetDate);
+  const { seconds, miliseconds } = useCountdown(targetDate);
 
-  if (days + hours + minutes + seconds <= 0) {
+  if (seconds <= 0) {
     return <div>expirado</div>;
   } else {
     return (
       <div>
-        Dias {days}
-        Horas {hours}
-        Minutos{minutes}
-        Segundos {seconds}
-        miil {miliseconds}
+        {seconds} : {miliseconds}
       </div>
     );
   }
