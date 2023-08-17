@@ -16,6 +16,7 @@ const GET_CURRENT_GAME = gql`
       id
       amount
       totalClicks
+      targetTime
     }
   }
 `;

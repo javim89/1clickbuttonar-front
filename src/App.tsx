@@ -4,9 +4,9 @@ import ClickToWin from "./components/ClickToWin";
 import { GET_CURRENT_GAME } from "./querys/querys";
 // import LastUser from "./components/LastUser";
 import { Grid } from "@mui/material";
-import { DateTime } from "luxon";
 import "./App.css";
 import { useCountdown } from "./hooks/useCountdown";
+import { DateTime } from "luxon";
 
 // const ShowUsers = (): React.ReactNode => {
 //   const { loading, error, data } = useQuery(GET_USERS);
@@ -25,8 +25,10 @@ import { useCountdown } from "./hooks/useCountdown";
 
 const Counter = ({ targetDate }: any): React.ReactNode => {
   const { seconds, miliseconds } = useCountdown(targetDate);
+  const currentDate = DateTime.now().setZone("UTC").toMillis();
 
-  if (seconds <= 0) {
+  if (currentDate >= targetDate) {
+    // Ganador -> Comenzar nuevo juego
     return <div>expirado</div>;
   } else {
     return (
@@ -46,16 +48,19 @@ const App = (): React.ReactNode => {
   return (
     <Grid container spacing={2} direction="column" justifyContent="center" alignItems="center" sx={{ minHeight: "100vh" }}>
       <Grid item>
+        Game Id {data.getCurrentGame.id} / Creado poner fecha
+      </Grid>
+      <Grid item>
         Gana {data.getCurrentGame.amount} pesos!
       </Grid>
       <Grid item>
-        <Counter targetDate={DateTime.local().plus({ seconds: 15 }).toMillis()} />
+        <Counter targetDate={Number(data.getCurrentGame.targetTime)} />
       </Grid>
       <Grid item>
       Total de clicks: {data.getCurrentGame.totalClicks ?? 0}
       </Grid>
       <Grid item>
-      <ClickToWin />
+      <ClickToWin gameId={data.getCurrentGame.id}/>
       </Grid>
     </Grid>
   );

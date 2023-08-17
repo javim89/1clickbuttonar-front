@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 
-const ADD_USER = gql`
+const CREATE_USER = gql`
   # Increments a back-end counter and gets its resulting value
   mutation ($name: String, $surname: String) {
-    addUser(name: $name, surname: $surname) {
+    createUser(name: $name, surname: $surname) {
       id
       name
       surname
@@ -11,6 +11,18 @@ const ADD_USER = gql`
   }
 `;
 
+const ADD_PARTICIPANT = gql`
+  mutation ($id: ID) {
+    addParticipant(id: $id) {
+      totalClicks
+      amount
+      id
+      targetTime
+    }
+  }
+`;
+
 export {
-  ADD_USER
+  CREATE_USER,
+  ADD_PARTICIPANT
 };
